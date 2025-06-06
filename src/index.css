@@ -21,6 +21,35 @@
     -webkit-text-stroke: 0.7px #64748b;
     opacity: 40%;
   }
+  .animate-fade-in {
+    animation: fadeIn 0.5s ease-out forwards;
+  }
+
+  @keyframes fadeIn {
+    0% {
+      opacity: 0;
+      transform: scale(0.95);
+    }
+    100% {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  .animate-scale-fade-in {
+    animation: scaleFadeIn 0.3s ease-out forwards;
+  }
+
+  @keyframes scaleFadeIn {
+    0% {
+      opacity: 0;
+      transform: scale(0.95);
+    }
+    100% {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
 }
 
 body {
@@ -42,4 +71,10 @@ body {
 }
 html {
   scroll-behavior: smooth;
+}
+a {
+  opacity: 1;
+}
+a:hover {
+  opacity: 0.7;
 }

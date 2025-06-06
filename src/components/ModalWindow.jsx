@@ -1,53 +1,47 @@
-import Field from "./Field";
-import TextDescription from "./TextDescription";
-import Button from "./Button";
+import { useEffect } from "react";
 import FlexContainer from "./FlexContainer";
-import { use, useEffect, useState } from "react";
 
-export default function ModalWindow({ state, onClose }) {
+export default function ModalWindow({
+  state,
+  onClose,
+  children,
+  className = "",
+}) {
+  useEffect(() => {
+    const root = document.getElementById("root");
+    if (state) {
+      document.body.style.overflow = "hidden";
+      document.documentElement.style.overflow = "hidden";
+      if (root) root.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+      document.documentElement.style.overflow = "";
+      if (root) root.style.overflow = "";
+    }
+
+    return () => {
+      document.body.style.overflow = "";
+      document.documentElement.style.overflow = "";
+      if (root) root.style.overflow = "";
+    };
+  }, [state]);
+
   if (!state) return null;
+
   return (
     <div
-      className={`fixed flex  inset-0 z-50 items-center justify-center bg-[#1A1F26]/70 backdrop-blur`}
+      className={`fixed flex bg-[#1A1F26]/70 backdrop-blur  shadow-sm h-full w-full inset-0 items-center justify-center  z-[21]  `}
     >
-      <FlexContainer className=" bg-white rounded-[20px] w-full max-w-[400px] md:max-w-[800px] py-10 px-3 md:px-30 relative gap-4.5">
-        <div className="relative">
-          <button
-            className="bg-black absolute right-10 -top-2"
-            onClick={onClose}
-          >
-            X
-          </button>
-          <h2 className="text-[22px]/[34px] text-[#142A4C]">
-            Приєднатися до ALLVART
-          </h2>
-          <div className="text-start">
-            <TextDescription>
-              Просто залиште свої дані і ми зв'яжемося з вами якомога швидше
-            </TextDescription>
-            <form className="grid max-md:max-w-[500px] grid-cols-1 gap-[18px] md:gap-[35px] items-center w-full">
-              <Field
-                className="w-full  placeholder-[#798395] text-[#798395]"
-                placeholder="Введіть ваше ім’я *"
-              />
-              <Field
-                className="w-full placeholder-[#798395] text-[#798395]"
-                placeholder="Номер мобільного *"
-              />
-              <Button className="text-[#798395]" variant={"primary"}>
-                Відправити
-              </Button>
-              <TextDescription className={" text-sm/[22px] leading-[24px]"}>
-                Натискаючи на кнопку “Відправити” я даю згоду на обробку
-                персональних даних і приймаю
-                <a href="#" className="underline underline-offset-3">
-                  {" умови "}
-                </a>
-                угоди
-              </TextDescription>
-            </form>
-          </div>
-        </div>
+      <FlexContainer
+        className={`animate-scale-fade-in bg-white rounded-[20px] max-w-[400px] md:max-w-[1176px] max-h-[90vh] py-10 px-3 md:px-22 relative gap-4.5 text-start transition duration-300 ${className}`}
+      >
+        <button
+          className="absolute right-0 -top-0 mt-5  mr-5 transform hover:scale-110 active:scale-130 transition-transform duration-300 cursor-pointer "
+          onClick={onClose}
+        >
+          <img src="/svg/icon-close.svg" alt="Close" />
+        </button>
+        {children}
       </FlexContainer>
     </div>
   );

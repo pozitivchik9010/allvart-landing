@@ -1,24 +1,27 @@
-export default function Nav({ className, onClick }) {
+export default function Nav({
+  className,
+  onClick,
+  colorText = "text-[#64748B]",
+}) {
+  const navLink = [
+    { title: "Переваги", href: "#main-goal-1" },
+    { title: "Кар’єра з Allvart", href: "#career" },
+    { title: "Порівняння", href: "#main-goal-2" },
+    { title: "Галерея", href: "#gallery" },
+    { title: "Запрошення", href: "#invitation-1" },
+  ];
   return (
     <ul
-      className={`  flex text-sm/5 text-[#142A4C] tracking-[0.1em] scroll-smooth ${className}`}
+      className={`flex text-sm/5  tracking-[0.1em] scroll-smooth ${className}`}
       onClick={onClick}
     >
-      <li>
-        <a href="#main-goal-1">Переваги</a>
-      </li>
-      <li>
-        <a href="#career">Кар’єра з Allvart</a>
-      </li>
-      <li>
-        <a href="#main-goal-2">Переваги</a>
-      </li>
-      <li>
-        <a href="#gallery">Фотогалерея</a>
-      </li>
-      <li>
-        <a href="#invitation-1">Запрошення</a>
-      </li>
+      {navLink.map((item, id) => (
+        <li key={id}>
+          <a className={`${colorText}`} href={item.href}>
+            {item.title}
+          </a>
+        </li>
+      ))}
     </ul>
   );
 }

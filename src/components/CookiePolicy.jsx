@@ -1,9 +1,8 @@
-import { useEffect, useState } from "react";
 import Button from "./Button";
-import TextDescription from "./TextDescription";
 import ModalWindow from "./ModalWindow";
+import TextDescription from "./TextDescription";
 
-const CookiePolicy = ({ state, onClose, onAccept }) => {
+export default function CookiePolicy({ state, onClose }) {
   return (
     <ModalWindow state={state} onClose={onClose}>
       <h2 className=" text-[22px]/[34px] md:text-4xl/[42px] font-medium text-[#142A4C]">
@@ -37,66 +36,7 @@ const CookiePolicy = ({ state, onClose, onAccept }) => {
         sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt
         mollit anim id est laborum.
       </TextDescription>
-      <Button variant={"primary"} onClick={onAccept}>
-        Прийняти
-      </Button>
+      <Button variant={"primary"}>Прийняти</Button>
     </ModalWindow>
-  );
-};
-
-export default function Cookie() {
-  const [isOpenModal, setIsOpenModal] = useState(false);
-  const [showCookie, setShowCookie] = useState(false);
-  useEffect(() => {
-    const accepted = localStorage.getItem("cookieAccepted");
-    if (!accepted) {
-      setShowCookie(true);
-    }
-    if (accepted === "true") {
-      setShowCookie(false);
-    }
-  }, []);
-
-  const handleAccept = () => {
-    console.log("Cookie accepted");
-    localStorage.setItem("cookieAccepted", "true");
-    setShowCookie(false);
-  };
-  if (!showCookie) return null;
-  return (
-    <>
-      <div className="fixed z-[19] bottom-2 w-[95%]  left-1/2 -translate-x-1/2 flex  gap-[30px] rounded-md bg-white px-2 md:px-10 py-2 md:py-4.5 md:text-start  max-w-[1274px] shadow-[0px_8px_8px_-4px_#0A0D120A,0px_20px_24px_-4px_#0A0D121A]">
-        <img
-          className="max-sm:hidden "
-          src="/svg/icon-cookie.svg"
-          alt="Icon Cookie"
-        />
-        <div className="flex max-md:flex-col gap-2.5 justify-between w-full max-w-[1120px] items-center">
-          <TextDescription className={"max-[500px]:text-xs"}>
-            Використання нашого сайту означає вашу згоду на отримання та
-            відправку файлів Cookie
-            <br />
-            <a
-              className="text-[#2445CE] underline underline-offset-3 cursor-pointer"
-              onClick={() => setIsOpenModal(true)}
-            >
-              Політика використання кукі файлів
-            </a>
-          </TextDescription>
-          <Button
-            variant={"primary"}
-            className="max-md:w-full"
-            onClick={handleAccept}
-          >
-            Прийняти
-          </Button>
-        </div>
-      </div>
-      <CookiePolicy
-        state={isOpenModal}
-        onClose={() => setIsOpenModal(false)}
-        onAccept={handleAccept}
-      ></CookiePolicy>
-    </>
   );
 }

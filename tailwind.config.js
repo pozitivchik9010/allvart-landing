@@ -1,25 +1,18 @@
 module.exports = {
-  content: ["./index.html", "./src/*.{js,ts,jsx,tsx}"],
-  safelist: [
-    "bg-[#1E6BE6]",
-    "hover:bg-[#2445CE]",
-    "active:bg-[#798395]",
-    "text-white",
-    "bg-[#FFFFFF]/5",
-    "active:text-[#0f172a]",
-    "active:bg-[#ffffff]/10",
-    "border",
-    "border-[#4C4D55]",
-    "sm:px-[40px]",
-  ],
+  content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
+
   theme: {
-    screens: {
-      sm: "340px",
-      md: "540px",
-      lg: "768px",
-      xl: "1180px",
+    extend: {
+      animation: {
+        "fade-in": "fadeIn 0.5s ease-out forwards",
+      },
+      keyframes: {
+        fadeIn: {
+          "0%": { opacity: 0, transform: "scale(0.95)" },
+          "100%": { opacity: 1, transform: "scale(1)" },
+        },
+      },
     },
-    extend: {},
   },
   plugins: [],
 };

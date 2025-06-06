@@ -4,14 +4,24 @@ export default function Button({
   className = "",
   variant,
   onClick,
+  type = "button",
+  disabledBtn,
   ...props
 }) {
-  const base =
-    "flex flex-row h-[44px] px-[20px] py-[10px] rounded-[6px] cursor-pointer justify-center items-center";
+  const base = `flex flex-row h-[44px]  rounded-[6px]  justify-center items-center ${
+    disabledBtn ? " cursor-no-drop" : "cursor-pointer"
+  }`;
   const variants = {
-    primary: "bg-[#1E6BE6] hover:bg-[#2445CE] active:bg-[#798395] text-white",
-    secondary:
-      "bg-[#FFFFFF]/5 active:text-[#0f172a] active:bg-[#ffffff]/10 border border-[#4C4D55] sm:px-[40px]",
+    primary: `px-[20px] py-[10px] bg-[#1E6BE6]  text-white ${
+      disabledBtn
+        ? "text-[#798395] cursor-no-drop bg-[#798395]"
+        : "hover:bg-[#2445CE] active:bg-[#1E6BE6]/80"
+    }`,
+    secondary: `bg-[#FFFFFF]/5 border border-[#4C4D55] sm:px-[40px] ${
+      disabledBtn
+        ? "text-[#798395] bg-[#ffffff]/5 cursor-no-drop"
+        : "text-white active:text-[#798395] hover:bg-[#ffffff]/10 active:bg-[#ffffff]/5"
+    }`,
   };
   if (href) {
     return (
@@ -19,7 +29,7 @@ export default function Button({
         href={href}
         onClick={onClick}
         {...props}
-        className={`${base} ${variants[variant]} ${className}`}
+        className={` ${base} ${variants[variant]} ${className}`}
       >
         {children}
       </a>
@@ -27,9 +37,9 @@ export default function Button({
   }
   return (
     <button
+      type={type}
       onClick={onClick}
-      type="button"
-      className={`${base} ${variants[variant]} ${className}`}
+      className={`${base} ${variants[variant]} ${className} `}
     >
       {children}
     </button>

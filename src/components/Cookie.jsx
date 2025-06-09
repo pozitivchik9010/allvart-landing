@@ -1,64 +1,17 @@
 import { useEffect, useState } from "react";
 import Button from "./Button";
 import TextDescription from "./TextDescription";
-import ModalWindow from "./ModalWindow";
-
-const CookiePolicy = ({ state, onClose, onAccept }) => {
-  return (
-    <ModalWindow state={state} onClose={onClose}>
-      <h2 className=" text-[22px]/[34px] md:text-4xl/[42px] font-medium text-[#142A4C]">
-        Політика використання кукі файлів
-      </h2>
-      <TextDescription className="overflow-y-auto max-h-[50vh] pr-4">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-        veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-        commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-        velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint
-        occaecat cupidatat non proident, sunt in culpa qui officia deserunt
-        mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur
-        adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-        magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
-        laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
-        in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-        pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa
-        qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit
-        amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-        labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-        exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-        Duis aute irure dolor in reprehenderit in voluptate velit esse cillum
-        dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-        proident, sunt in culpa qui officia deserunt mollit anim id est
-        laborum.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-        eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-        minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-        ex ea commodo consequat. Duis aute irure dolor in reprehenderit in
-        voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur
-        sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt
-        mollit anim id est laborum.
-      </TextDescription>
-      <Button variant={"primary"} onClick={onAccept}>
-        Прийняти
-      </Button>
-    </ModalWindow>
-  );
-};
+import CookiePolicy from "./CookiePolicy";
+import ModalManager from "./ModalManager";
 
 export default function Cookie() {
-  const [isOpenModal, setIsOpenModal] = useState(false);
   const [showCookie, setShowCookie] = useState(false);
   useEffect(() => {
     const accepted = localStorage.getItem("cookieAccepted");
-    if (!accepted) {
-      setShowCookie(true);
-    }
-    if (accepted === "true") {
-      setShowCookie(false);
-    }
+    setShowCookie(accepted !== "true");
   }, []);
 
   const handleAccept = () => {
-    console.log("Cookie accepted");
     localStorage.setItem("cookieAccepted", "true");
     setShowCookie(false);
   };
@@ -76,27 +29,23 @@ export default function Cookie() {
             Використання нашого сайту означає вашу згоду на отримання та
             відправку файлів Cookie
             <br />
-            <a
+            <ModalManager
+              onAccept={handleAccept}
+              variant={"cookie"}
               className="text-[#2445CE] underline underline-offset-3 cursor-pointer"
-              onClick={() => setIsOpenModal(true)}
             >
               Політика використання кукі файлів
-            </a>
+            </ModalManager>
           </TextDescription>
           <Button
             variant={"primary"}
-            className="max-md:w-full"
+            className=" w-full  sm:max-w-[148px] "
             onClick={handleAccept}
           >
             Прийняти
           </Button>
         </div>
       </div>
-      <CookiePolicy
-        state={isOpenModal}
-        onClose={() => setIsOpenModal(false)}
-        onAccept={handleAccept}
-      ></CookiePolicy>
     </>
   );
 }

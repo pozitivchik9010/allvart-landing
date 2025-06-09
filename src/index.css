@@ -16,10 +16,28 @@
 
 @tailwind utilities;
 @layer utilities {
+  .swiper-custom-pagination {
+  }
+  .dot {
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    background: #cfdadf;
+    border-radius: 50%;
+    margin: 0 4px;
+    transition: background 0.3s;
+  }
+
+  .dot-active {
+    background: #2445ce;
+  }
   .text-outline {
+    font-family: "IBM Plex Sans	", sans-serif;
+    font-weight: 900;
     color: transparent;
-    -webkit-text-stroke: 0.7px #64748b;
-    opacity: 40%;
+    -webkit-text-stroke: 0.4px #cccccc;
+    -webkit-text-fill-color: transparent;
+    text-shadow: none;
   }
   .animate-fade-in {
     animation: fadeIn 0.5s ease-out forwards;
@@ -51,7 +69,26 @@
     }
   }
 }
+::-webkit-scrollbar {
+  width: 4px;
+}
 
+::-webkit-scrollbar-track {
+  border-radius: 10px;
+
+  background: #f0f4ff;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #3b82f6;
+  border-radius: 10px;
+  border: 0px solid #f0f4ff;
+}
+
+.scrollable-container {
+  overflow-y: scroll;
+  -webkit-overflow-scrolling: touch;
+}
 body {
   margin: 0;
   display: flex;

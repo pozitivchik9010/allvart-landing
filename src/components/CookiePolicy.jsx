@@ -1,14 +1,24 @@
+import { useState } from "react";
 import Button from "./Button";
 import ModalWindow from "./ModalWindow";
 import TextDescription from "./TextDescription";
 
-export default function CookiePolicy({ state, onClose }) {
+export default function CookiePolicy({ state, onAccept, onClose }) {
+  const handleAccept = () => {
+    localStorage.setItem("cookieAccepted", "true");
+    onAccept?.();
+    onClose();
+  };
   return (
-    <ModalWindow state={state} onClose={onClose}>
+    <ModalWindow
+      state={state}
+      onClose={onClose}
+      className="max-md:max-h-screen h-full gap-4.5"
+    >
       <h2 className=" text-[22px]/[34px] md:text-4xl/[42px] font-medium text-[#142A4C]">
         Політика використання кукі файлів
       </h2>
-      <TextDescription className="overflow-y-auto max-h-[50vh] pr-4">
+      <TextDescription className="overflow-y-auto h-full pr-4">
         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
         tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
         veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
@@ -36,7 +46,15 @@ export default function CookiePolicy({ state, onClose }) {
         sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt
         mollit anim id est laborum.
       </TextDescription>
-      <Button variant={"primary"}>Прийняти</Button>
+      <Button
+        className={`${
+          !onAccept ? "hidden" : "block"
+        } md:max-w-40 w-full mx-auto`}
+        variant={"primary"}
+        onClick={handleAccept}
+      >
+        Прийняти
+      </Button>
     </ModalWindow>
   );
 }

@@ -8,6 +8,7 @@ import Footer from "./components/Footer";
 import Form from "./components/Form";
 import Header from "./components/Header";
 import InfoCard from "./components/InfoCard";
+import ModalManager from "./components/ModalManager";
 import ModalWindow from "./components/ModalWindow";
 
 import SliderImage from "./components/SliderImage";
@@ -129,7 +130,7 @@ function App() {
           </FlexContainer>
         </div>
       </section>
-      <Cookie></Cookie>
+      <Cookie />
 
       <section
         id="main-goal-1"
@@ -147,7 +148,7 @@ function App() {
             <span className="text-[#64748B] text-outline absolute -top-30 md:-top-[10%] left-1/2 -translate-x-1/2 text-6xl/[80px] font-black md:text-[124px]/41  z-0 select-none pointer-events-none tracking-[0.2em] uppercase">
               Переваги
             </span>
-            <FlexContainer className="w-full text-start mb-3 justify-items-start gap-3">
+            <FlexContainer className="z-1 w-full text-start mb-3 justify-items-start gap-3">
               <h2 className="text-[34px]/[40px] md:text-[40px] font-semibold text-[#020817] inline-block ">
                 Масштабуйте свій бізнес з{" "}
                 <span className="text-[#2445CE]">ALLVART</span>
@@ -184,7 +185,7 @@ function App() {
                   textItem={"Нотаріальні послуги безпосередньо в офісі"}
                 />
               </div>
-              <FlexContainer className="hidden xl:block gap-[40px] w-[490px] text-start">
+              <FlexContainer className="relative hidden xl:flex gap-[40px] w-[490px] text-start">
                 <TextDescription>
                   Долучайся до нашої команди.
                   <br />З нами будеш заробляти значно більше!
@@ -193,6 +194,10 @@ function App() {
                   Будувати власну кар’єру з ALLVART значно простіше, лише
                   власний шлях без агенцій в зручній CRM
                 </TextDescription>
+                <img
+                  src="/img/bg-logo.svg"
+                  className="absolute  top-1/2 left-0 transform -translate-y-1/2"
+                />
               </FlexContainer>
             </div>
           </FlexContainer>
@@ -203,7 +208,7 @@ function App() {
         className="scroll-mt-[64px] flex justify-center h-full bg-linear-to-b from-[#0A0D1B] to-[#030D37]"
       >
         <FlexContainer className=" overflow-hidden  relative gap-[34px] md:gap-[80px] items-center w-full max-w-[1538px] px-3 pt-[40px] md:pt-[80px]">
-          <div className="max-lg:hidden absolute -top-25 gap-[35px] grid grid-cols-12 w-full">
+          <div className="max-lg:hidden absolute -top-25 grid grid-cols-12 w-full">
             <div className="col-start-2  h-[254px] w-px bg-gradient-to-b from-[#0A0D1B]/0 from-0% via-[#60A5FA] via-50% to-[#0A0D1B]/0 to-100%  pointer-events-none" />
             <div className="col-start-12 h-[254px] w-px bg-gradient-to-b from-[#0A0D1B]/0 from-0% via-[#60A5FA] via-50% to-[#0A0D1B]/0 to-100%  pointer-events-none" />
           </div>
@@ -216,10 +221,10 @@ function App() {
               <span className="text-[#60A5FA]">ALLVART</span>
             </h2>
           </div>
-          <div className="grid grid-cols-3 lg:grid-cols-[1fr_2fr_1fr] xl:grid-cols-[1fr_4fr_1fr] w-full h-full sm:justify-items-center gap-[35px] mx-5">
-            <div className="relative grid col-span-1 max-lg:w-[40px] max-lg:h-[120px] max-w-[300px] max-h-[325px] w-full h-full bg-transparent">
+          <div className="grid grid-cols-3 lg:grid-cols-[1fr_2fr_1fr] xl:grid-cols-[1fr_4fr_1fr] w-full h-full justify-items-center gap-[35px] mx-5">
+            <div className="relative xl:absolute xl:left-0 xl:top-[230px] grid col-span-1 max-lg:w-[40px] max-lg:h-[120px] max-w-[300px] max-h-[325px] w-full h-full bg-transparent">
               <div className="absolute top-0 left-0 h-full w-full max-h-[325px] max-w-[100px]">
-                <div className="absolute top-[20px] left-[-10px] w-full h-full border border-[#60A5FA]"></div>
+                <div className="absolute top-[8px] left-[-4px] lg:top-[20px] lg:left-[-10px] w-full h-full border border-[#60A5FA]"></div>
                 <div
                   className="relative w-full h-full overflow-hidden"
                   style={{
@@ -231,7 +236,7 @@ function App() {
               </div>
 
               <div className="absolute top-18 max-lg:left-13 left-32  h-full w-full max-h-[325px] max-w-[100px]">
-                <div className="absolute top-[20px] left-[-10px] w-full h-full border border-[#60A5FA]"></div>
+                <div className="absolute  top-[8px] left-[-4px] lg:top-[20px] lg:left-[-10px] w-full h-full border border-[#60A5FA]"></div>
                 <div
                   className="relative w-full h-full overflow-hidden"
                   style={{
@@ -243,7 +248,7 @@ function App() {
               </div>
             </div>
 
-            <div className="grid grid-cols-2 max-lg:contents  w-full  gap-x-[35px] gap-y-[50px]">
+            <div className="grid col-start-2 grid-cols-2 max-lg:contents  w-full  gap-x-[35px] gap-y-[50px]">
               <div className="grid max-lg:col-span-2 gap-[50px]">
                 <TextBlock
                   className={"max-w-[450px] text-start text-white"}
@@ -289,9 +294,9 @@ function App() {
               </div>
             </div>
 
-            <div className="relative grid col-span-1 max-lg:w-[40px] max-lg:h-[120px] max-w-[300px] max-h-[325px] w-full h-full bg-transparent">
+            <div className="relative  grid col-span-1 max-lg:w-[40px] max-lg:h-[120px] max-w-[300px] max-h-[325px] w-full h-full bg-transparent">
               <div className="absolute top-0 -left-3 h-full w-full max-h-[325px] max-w-[100px]">
-                <div className="absolute top-[20px] left-[-10px] w-full h-full border border-[#60A5FA]"></div>
+                <div className="absolute  top-[8px] left-[-4px] lg:top-[20px] lg:left-[-10px] w-full h-full border border-[#60A5FA]"></div>
                 <div
                   className="relative w-full h-full overflow-hidden"
                   style={{
@@ -302,8 +307,8 @@ function App() {
                 ></div>
               </div>
 
-              <div className="absolute top-18 max-lg:left-13 left-32  h-full w-full max-h-[325px] max-w-[100px]">
-                <div className="absolute top-[20px] left-[-10px] w-full h-full border border-[#60A5FA]"></div>
+              <div className="absolute top-18 max-lg:left-10 left-32  h-full w-full max-h-[325px] max-w-[100px]">
+                <div className="absolute  top-[8px] left-[-4px] lg:top-[20px] lg:left-[-10px] w-full h-full border border-[#60A5FA]"></div>
                 <div
                   className="relative w-full h-full overflow-hidden"
                   style={{
@@ -316,121 +321,21 @@ function App() {
             </div>
           </div>
 
-          {/* 
-		  <div className="grid grid-cols-12 w-full h-full gap-[35px]  ">
-            <div className="relative grid col-start-1 col-end-3 max-lg:h-[120px] max-w-[300px] max-h-[325px] w-full h-full bg-transparent">
-              <div className="absolute top-0 left-0 h-full w-full max-h-[325px] max-w-[100px]">
-                <div className="absolute top-[20px] left-[-10px] w-full h-full border border-blue-500"></div>
-                <div
-                  className=" w-full h-full overflow-hidden"
-                  style={{
-                    backgroundImage: `url('/img/background-image-people1.png')`,
-                    backgroundSize: "900%",
-                    backgroundPosition: "40% 0",
-                  }}
-                ></div>
-              </div>
-
-              <div className="absolute top-18 max-lg:left-13 left-32  h-full w-full max-h-[325px] max-w-[100px]">
-                <div className="absolute  top-[20px] left-[-10px] w-full h-full border border-blue-500"></div>
-                <div
-                  className="relative w-full h-full overflow-hidden"
-                  style={{
-                    backgroundImage: `url('/img/background-image-people1.png')`,
-                    backgroundSize: "900%",
-                    backgroundPosition: "56% 27%",
-                  }}
-                ></div>
-              </div>
-            </div>
-
-            <div className="grid col-start-3 col-end-11 max-lg:contents  w-full  gap-x-[35px] gap-y-[50px]">
-              <div className="grid max-lg:col-span-2 gap-[50px]">
-                <TextBlock
-                  className={"max-w-[450px] text-start text-white"}
-                  title={"50 безкоштовних оголошень"}
-                  text={
-                    "Безкоштовні оголошенння для OLX при публікації через CRM Allvart"
-                  }
-                />
-
-                <TextBlock
-                  className={"max-w-[450px] text-start text-white"}
-                  title={"Велика база"}
-                  text={"База, яка оновлюється новими об’єктами кожного дня"}
-                />
-                <TextBlock
-                  className={"max-w-[450px] text-start text-white"}
-                  title={"CRM"}
-                  text={
-                    "Доступна та зручна CRM з власним додатком для смартфону"
-                  }
-                />
-              </div>
-              <div className="grid max-lg:col-span-2 gap-[50px]">
-                <TextBlock
-                  className={"max-w-[450px] text-start text-white"}
-                  title={"Нотаріус та юрист"}
-                  text={"Повний нотаріальний та юридичний супровід"}
-                />
-
-                <TextBlock
-                  className={"max-w-[450px] text-start text-white"}
-                  title={"Сейфові скриньки"}
-                  text={
-                    "Індивідуальні сейфові скриньки для зберігання цінних речей. Під охороною 24/7"
-                  }
-                />
-
-                <TextBlock
-                  className={"max-w-[450px] text-start text-white"}
-                  title={"Банк"}
-                  text={"Банк в будівлі офісу"}
-                />
-              </div>
-            </div>
-
-            <div className="relative grid col-start-11 max-lg:w-[40px] max-lg:h-[120px] max-w-[300px] max-h-[325px] w-full h-full bg-transparent">
-              <div className="absolute top-0 -left-3 h-full w-full max-h-[325px] max-w-[100px]">
-                <div className="absolute top-[20px] left-[-10px] w-full h-full border border-blue-500"></div>
-                <div
-                  className="relative w-full h-full overflow-hidden"
-                  style={{
-                    backgroundImage: `url('/img/background-image-people2.png')`,
-                    backgroundSize: "600%",
-                    backgroundPosition: "20% 0",
-                  }}
-                ></div>
-              </div>
-
-              <div className="absolute top-6 max-lg:left-10 left-32  h-full w-full max-h-[325px] max-w-[100px]">
-                <div className="absolute top-[20px] left-[-10px] w-full h-full border border-blue-500"></div>
-                <div
-                  className="relative w-full h-full overflow-hidden"
-                  style={{
-                    backgroundImage: `url('/img/background-image-people2.png')`,
-                    backgroundSize: "600%",
-                    backgroundPosition: "48% -12px",
-                  }}
-                ></div>
-              </div>
-            </div>
-          </div> 
-		  */}
-          <Button
-            variant={"secondary"}
-            className={"max-[400px]:w-full px-10 py-3"}
-          >
-            Почати зараз
-          </Button>
-          <Button
-            href="#main-goal-2"
-            className=" contents w-7.5 mb-[30px] md:mb-[60px]"
-          >
-            <span className="border-white border rounded-full w-[10px] h-[19px] ">
-              <span className=" inline-block w-[2px] h-[2px]  bg-white rounded-full"></span>
-            </span>
-          </Button>
+          <FlexContainer className="items-center gap-[24px] md:gap-[40px] mb-[30px] md:mb-[60px]">
+            <ModalManager variant={"formModal"}>
+              <Button
+                variant={"secondary"}
+                className={"max-[400px]:w-full px-10 py-3 "}
+              >
+                Почати зараз
+              </Button>
+            </ModalManager>
+            <Button href="#main-goal-2" className="w-10 h-10">
+              <span className="border-white border rounded-full w-[10px] h-[19px] ">
+                <span className=" inline-block w-[2px] h-[2px]  bg-white rounded-full"></span>
+              </span>
+            </Button>
+          </FlexContainer>
         </FlexContainer>
       </section>
       <section
@@ -505,10 +410,10 @@ function App() {
       </section>
       <section
         id="invitation-1"
-        className="flex overflow-x-visible justify-center bg-linear-to-b from-[#0A0D1B] to-[#030D37] h-full min-h-[460px] py-10  scroll-mt-[64px]"
+        className="flex overflow-x-clip justify-center bg-linear-to-b from-[#0A0D1B] to-[#030D37] h-full min-h-[460px] py-10  scroll-mt-[64px]"
       >
         <div className=" relative grid md:grid-cols-12 text-start md:text-center justify-center w-full  max-w-[1538px] pt-2.5 md:py-6 max-md:px-3">
-          <span className=" text-outline top-0 left-0 text-[#CCCCCC] absolute text-[40px]/[50px] md:text-[120px]/30 font-black z-0 select-none pointer-events-none tracking-[0.2em] uppercase">
+          <span className=" text-outline top-0 left-0 text-[#CCCCCC] absolute text-[40px]/[50px] md:text-[120px]/30 font-black z-0 select-none pointer-events-none tracking-[0.2em] md:tracking-[0.1em] opacity-40 uppercase">
             Презентація
           </span>
           <FlexContainer className="z-1  md:col-start-2 md:col-end-10 gap-[22px] md:gap-[57px] w-full max-w-[1538px]  items-start text-start">
@@ -526,14 +431,7 @@ function App() {
                 className={"max-md:text-sm/[22px] leading-[24px] text-white"}
                 children={` Просто залиште свої дані і ми зв'яжемося з вами якомога швидше`}
               ></TextDescription>
-              {/* <form className="grid max-md:max-w-[500px] grid-cols-1 md:grid-cols-[3fr_3fr_2fr] gap-[18px] md:gap-[35px] items-center w-full">
-                <Field className="w-full" placeholder="Введіть ваше ім’я *" />
-                <Field className="w-full " placeholder="Номер мобільного *" />
 
-                <Button className="text-[#798395]" variant={"secondary"}>
-                  Відправити
-                </Button>
-              </form> */}
               <Form
                 usedFields={["username", "phone"]}
                 className={
@@ -580,9 +478,12 @@ function App() {
                 {
                   "Натискаючи на кнопку “Відправити” я даю згоду на обробку персональних даних і приймаю "
                 }
-                <a href="#" className="underline underline-offset-3">
+                <ModalManager
+                  variant={"terms"}
+                  className="underline underline-offset-3"
+                >
                   {"умови"}
-                </a>
+                </ModalManager>
                 {" угоди"}
               </TextDescription>
             </FlexContainer>
@@ -605,136 +506,94 @@ function App() {
         </div>
       </section>
 
-      <section
-        id="invitation-2"
-        className=" scroll-mt-[64px] h-full overflow-hidden bg-linear-to-b from-[#0A0D1B] to-[#030D37] "
-      >
-        <div className="flex flex-col px-3 pt-[38px] py-[56px] md:py-[60px] gap-[21px] w-full max-w-[1536px] relative mx-auto">
-          <div className="max-md:hidden absolute -top-50 left-8 h-[254px] w-px bg-gradient-to-b from-transparent via-white/10 to-transparent pointer-events-none" />
-          <div className="max-md:hidden absolute -top-50 right-8 h-[254px] w-px bg-gradient-to-b from-transparent via-white/10 to-transparent pointer-events-none" />
-          <div className="max-xl:hidden absolute -top-10 left-30 rounded-full outline-dashed outline-[0.7px] outline-[#828695] w-[600px] h-[600px]"></div>
-          <div className="max-xl:hidden absolute top-40 -left-90 rounded-full outline-dashed outline-[0.7px] outline-[#828695] w-[1067px] h-[1067px]"></div>
+      <section id="invitation-2" className=" scroll-mt-[64px] h-full ">
+        <div className="overflow-hidden bg-linear-to-b from-[#0A0D1B] to-[#030D37] ">
+          <div className="flex flex-col px-3 pt-[38px] py-[56px] md:py-[60px] gap-[21px] w-full max-w-[1536px] relative mx-auto">
+            <div className="max-md:hidden absolute -top-50 left-8 h-[254px] w-px bg-gradient-to-b from-transparent via-white/10 to-transparent pointer-events-none" />
+            <div className="max-md:hidden absolute -top-50 right-8 h-[254px] w-px bg-gradient-to-b from-transparent via-white/10 to-transparent pointer-events-none" />
+            <div className="max-xl:hidden absolute top-[35px] left-30 rounded-full outline-dashed outline-[0.7px] outline-[#828695] w-[600px] h-[600px]"></div>
+            <div className="max-xl:hidden absolute top-40 -left-90 rounded-full outline-dashed outline-[0.7px] outline-[#828695] w-[1067px] h-[1067px]"></div>
 
-          <h2 className=" max-md:hidden  text-white font-medium text-base/[30px] tracking-[0.4em] uppercase ">
-            Запрошення
-          </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-[20px] md:gap-[35px]">
-            <div className="z-2 flex flex-col gap-3 items-center justify-center">
-              <img
-                className="max-md:w-[53px] max-md:order-[-1]"
-                src="/svg/logo-allvart-top.svg"
-                alt="Logo"
-              />
-              <h2 className=" md:hidden text-white font-medium text-sm/5 tracking-[0.4em] uppercase ">
-                Запрошення
-              </h2>
-            </div>
-
-            <div className="flex relative flex-col gap-3 items-start text-start w-full h-max ">
-              <div className="hidden xl:block w-160">
-                <img src="/svg/bg-dots.svg" className="" />
-              </div>
-              <div className="flex flex-col gap-5 md:gap-10">
-                <h2 className="text-[34px]/[40px] md:text-[40px]/[50px] font-semibold text-white inline-block ">
-                  Хочете дізнатися більше про
-                  <br /> ALLVART?
+            <h2 className=" max-md:hidden  text-white font-medium text-base/[30px] tracking-[0.4em] uppercase ">
+              Запрошення
+            </h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-[20px] md:gap-[35px]">
+              <div className="z-2 flex flex-col gap-3 items-center justify-center">
+                <img
+                  className="max-md:w-[53px] max-md:order-[-1]"
+                  src="/svg/logo-allvart-top.svg"
+                  alt="Logo"
+                />
+                <h2 className=" md:hidden text-white font-medium text-sm/5 tracking-[0.4em] uppercase ">
+                  Запрошення
                 </h2>
-                {/* <Form
-                textArea
-                className={
-                  "max-w-[489px] grid max-md:max-w-[500px] text-[#798395] grid-cols-1 gap-[30px] items-start  w-full"
-                }
-              /> */}
-                <Form
-                  usedFields={["username", "phone", "message"]}
-                  className={
-                    "max-w-[489px] grid max-md:max-w-[500px] text-white grid-cols-1 gap-[30px] items-start  w-full"
-                  }
-                >
-                  {({ values, errors, handleChange }) => (
-                    <>
-                      <Field
-                        value={values.username}
-                        name="username"
-                        onChange={handleChange}
-                        error={errors.username}
-                        required
-                        placeholder="Введіть ваше ім'я *"
-                      />
-                      <Field
-                        value={values.phone}
-                        name="phone"
-                        onChange={handleChange}
-                        error={errors.phone}
-                        required
-                        type="tel"
-                        placeholder="Номер мобільного"
-                      />
-                      <textarea
-                        value={values.message}
-                        name="message"
-                        onChange={handleChange}
-                        placeholder="Повідомлення"
-                        className="w-full min-h-[120px] outline-none p-3 placeholder-[#798395] placeholder:text-base/[22px] text-white bg-white/5 border-b border-b-[#C3C5DF]"
-                      />
-                      <Button
-                        disabledBtn={
-                          !values.username.trim() ||
-                          !values.phone.trim() ||
-                          errors.username ||
-                          errors.phone
-                        }
-                        type="submit"
-                        className="text-[#798395] md:max-w-40"
-                        variant="secondary"
-                      >
-                        Відправити
-                      </Button>
-                    </>
-                  )}
-                </Form>
-                {/* <form className="grid max-md:max-w-[500px] grid-cols-1 gap-[30px] items-start max-w-[489px] w-[100%]">
-                <Field className="w-full" placeholder="Введіть ваше ім’я *" />
-                <Field
-                  className={"md:w-3/5"}
-                  placeholder="Номер мобільного *"
-                  type={"tel"}
-                />
-                <textarea
-                  className="w-full  min-h-[120px] outline-none  p-3  bg-white/5 border-b border-b-[#C3C5DF]"
-                  placeholder="Повідомлення"
-                />
-                <Button
-                  className="text-[#798395] md:w-1/3 "
-                  variant={"secondary"}
-                >
-                  Відправити
-                </Button>
-              </form> */}
+              </div>
+
+              <div className="flex relative flex-col gap-3 items-start text-start w-full h-max ">
+                <div className="hidden xl:block w-160">
+                  <img src="/svg/bg-dots.svg" className="" />
+                </div>
+                <div className="flex flex-col gap-5 md:gap-10">
+                  <h2 className="text-[34px]/[40px] md:text-[40px]/[50px] font-semibold text-white inline-block ">
+                    Хочете дізнатися більше про
+                    <br /> ALLVART?
+                  </h2>
+
+                  <Form
+                    usedFields={["username", "phone", "message"]}
+                    className={
+                      "max-w-[489px] grid max-md:max-w-[500px] text-white grid-cols-1 gap-[30px] items-start  w-full"
+                    }
+                  >
+                    {({ values, errors, handleChange }) => (
+                      <>
+                        <Field
+                          value={values.username}
+                          name="username"
+                          onChange={handleChange}
+                          error={errors.username}
+                          required
+                          placeholder="Введіть ваше ім'я *"
+                        />
+                        <Field
+                          value={values.phone}
+                          name="phone"
+                          onChange={handleChange}
+                          error={errors.phone}
+                          required
+                          type="tel"
+                          placeholder="Номер мобільного *"
+                        />
+                        <textarea
+                          value={values.message}
+                          name="message"
+                          onChange={handleChange}
+                          placeholder="Повідомлення"
+                          className="w-full min-h-[120px] outline-none p-3 placeholder-[#798395] placeholder:text-base/[22px] text-white bg-white/5 border-b border-b-[#C3C5DF]"
+                        />
+                        <Button
+                          disabledBtn={
+                            !values.username.trim() ||
+                            !values.phone.trim() ||
+                            errors.username ||
+                            errors.phone
+                          }
+                          type="submit"
+                          className="text-[#798395] md:max-w-40"
+                          variant="secondary"
+                        >
+                          Відправити
+                        </Button>
+                      </>
+                    )}
+                  </Form>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </section>
       <Footer />
-      <section className="flex h-full   bg-[#142A4C] items-center justify-center">
-        <div className="flex flex-col-reverse w-full max-w-[1538px] gap-5 md:flex-row h-full grid-cols-1 md:grid-cols-2 pt-3 pb-5 justify-center md:justify-between">
-          <span className="max-md:text-[#64748B]">
-            © 2025 ALLVART. Всі права захищені
-          </span>
-          <ul className="grid grid-cols-1 md:grid-cols-3 gap-2 md:gap-[90px] items-center">
-            <li>
-              <a href="/">Політика конфіденційності</a>
-            </li>
-            <li>
-              <a href="/">Умови надання послуг</a>
-            </li>
-            <li>
-              <a href="/">Політика щодо файлів cookie</a>
-            </li>
-          </ul>
-        </div>
-      </section>
     </div>
   );
 }

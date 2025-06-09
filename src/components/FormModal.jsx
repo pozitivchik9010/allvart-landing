@@ -2,6 +2,7 @@ import Button from "./Button";
 import Field from "./Field";
 import FlexContainer from "./FlexContainer";
 import Form from "./Form";
+import ModalManager from "./ModalManager";
 import ModalWindow from "./ModalWindow";
 import TextDescription from "./TextDescription";
 
@@ -26,6 +27,7 @@ export default function FormModal({ state, onClose }) {
             {({ values, errors, handleChange }) => (
               <>
                 <Field
+                  className={"text-[#142A4C]"}
                   value={values.username}
                   name="username"
                   onChange={handleChange}
@@ -34,6 +36,7 @@ export default function FormModal({ state, onClose }) {
                   placeholder="Введіть ваше ім'я*"
                 />
                 <Field
+                  className={"text-[#142A4C]"}
                   value={values.phone}
                   name="phone"
                   onChange={handleChange}
@@ -65,9 +68,12 @@ export default function FormModal({ state, onClose }) {
             {
               "Натискаючи на кнопку “Відправити” я даю згоду на обробку персональних даних і приймаю "
             }
-            <a href="#" className="underline underline-offset-3">
+            <ModalManager
+              variant={"terms"}
+              className="underline underline-offset-3"
+            >
               {"умови"}
-            </a>
+            </ModalManager>
             {" угоди"}
           </TextDescription>
         </FlexContainer>

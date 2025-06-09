@@ -3,6 +3,7 @@ import Nav from "./Nav";
 import Button from "./Button";
 import { useState, useEffect } from "react";
 import FormModal from "./formModal";
+import ModalManager from "./ModalManager";
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
@@ -27,7 +28,6 @@ export default function Header() {
       <div
         className={`flex max-lg:bg-white flex-row items-center justify-between w-full max-w-[1538px] mx-auto text-[#DFDFDF] h-min px-4   `}
       >
-        <FormModal state={isOpenModal} onClose={() => setIsOpenModal(false)} />
         <button
           className="lg:hidden w-10 h-10 flex flex-col justify-center items-center gap-1 relative z-20"
           onClick={() => setIsOpen((prev) => !prev)}
@@ -57,8 +57,8 @@ export default function Header() {
           className="max-lg:hidden flex-row  gap-[30px] xl:gap-[70px] lg:text-white"
           onClick={() => setIsOpen(false)}
         />
-        <div className="flex gap-[40px] items-center font-medium">
-          <Button className="gap-[10px]  tracking-[0.1em] hover:text-white hover:border-white/20 hover:bg-white/10 active:border-white/20 active:bg-white/5">
+        <div className="flex md:gap-[40px] items-center font-medium max-md:w-10 max-md:h-10">
+          <Button className="gap-[10px]  tracking-[0.1em] hover:text-white hover:border-white/20 hover:bg-white/10 active:border-white/20 active:bg-white/5 max-md:w-full">
             <svg
               className={`w-6 h-6  fill-current max-lg:text-[#142A4C] ${
                 isScrolled ? "text-[#142A4C]" : "text-[#DFDFDF]"
@@ -87,13 +87,12 @@ export default function Header() {
               Вхід
             </p>
           </Button>
-          <Button
-            variant="primary"
-            className="max-lg:hidden "
-            onClick={() => setIsOpenModal(true)}
-          >
-            <span>Відправити заявку</span>
-          </Button>
+
+          <ModalManager variant={"formModal"}>
+            <Button variant="primary" className="max-lg:hidden ">
+              <span>Відправити заявку</span>
+            </Button>
+          </ModalManager>
         </div>
       </div>
 
@@ -129,14 +128,16 @@ export default function Header() {
           className="flex-col gap-[40px]"
           onClick={() => setIsOpen(false)}
         />
-        <Button
-          variant="primary"
-          onClick={() => {
-            setIsOpen(false), setIsOpenModal(true);
-          }}
-        >
-          <span>Відправити заявку</span>
-        </Button>
+        <ModalManager variant={"formModal"}>
+          <Button
+            variant="primary"
+            onClick={() => {
+              setIsOpen(false);
+            }}
+          >
+            <span>Відправити заявку</span>
+          </Button>
+        </ModalManager>
       </div>
     </header>
   );

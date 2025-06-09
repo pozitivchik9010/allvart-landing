@@ -8,7 +8,7 @@ export default function Nav({
     { title: "Кар’єра з Allvart", href: "#career" },
     { title: "Порівняння", href: "#main-goal-2" },
     { title: "Галерея", href: "#gallery" },
-    { title: "Запрошення", href: "#invitation-1" },
+    { title: "Запрошення", href: "#invitation-2" },
   ];
   return (
     <ul

@@ -207,10 +207,12 @@ function App() {
         id="career"
         className="scroll-mt-[64px] flex justify-center h-full bg-linear-to-b from-[#0A0D1B] to-[#030D37]"
       >
-        <FlexContainer className=" overflow-hidden  relative gap-[34px] md:gap-[80px] items-center w-full max-w-[1538px] px-3 pt-[40px] md:pt-[80px]">
-          <div className="max-lg:hidden absolute -top-25 grid grid-cols-12 w-full">
-            <div className="col-start-2  h-[254px] w-px bg-gradient-to-b from-[#0A0D1B]/0 from-0% via-[#60A5FA] via-50% to-[#0A0D1B]/0 to-100%  pointer-events-none" />
-            <div className="col-start-12 h-[254px] w-px bg-gradient-to-b from-[#0A0D1B]/0 from-0% via-[#60A5FA] via-50% to-[#0A0D1B]/0 to-100%  pointer-events-none" />
+        <FlexContainer className="  relative gap-[34px] md:gap-[80px] items-center w-full max-w-[1538px] px-3 pt-[40px] md:pt-[80px]">
+          <div className="max-lg:hidden absolute top-0 grid grid-cols-12  overflow-hidden  h-full  w-full">
+            <div className="absolute -top-25 grid grid-cols-12 w-full">
+              <div className="col-start-2  h-[254px] w-px bg-gradient-to-b from-[#0A0D1B]/0 from-0% via-[#60A5FA] via-50% to-[#0A0D1B]/0 to-100%  pointer-events-none" />
+              <div className="col-start-12 h-[254px] w-px bg-gradient-to-b from-[#0A0D1B]/0 from-0% via-[#60A5FA] via-50% to-[#0A0D1B]/0 to-100%  pointer-events-none" />
+            </div>
           </div>
           <div className="grid gap-[20px] md:gap-[12px] w-full max-w-80 min-[500px]:max-w-170">
             <h2 className="  font-medium text-sm/5 md:text-base/[30px] tracking-[0.4em] uppercase">

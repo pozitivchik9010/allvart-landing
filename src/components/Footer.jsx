@@ -9,29 +9,34 @@ import TextDescription from "./TextDescription";
 export default function Footer() {
   const socialLink = [
     {
-      src: "#instagram",
+      src: "https://www.instagram.com/allvartallvart?igsh=MWViemsyc2ZpaGdleQ==",
       title: "Інстаграм",
       img: "/svg/social/social-icon-instagram.svg",
     },
     {
-      src: "#youtube",
+      src: "https://www.youtube.com/@Allvart",
       title: "Ютуб",
       img: "/svg/social/social-icon-youtube.svg",
     },
     {
-      src: "#facebook",
+      src: "https://www.facebook.com/people/Allvart/61577166452262/",
       title: "Facebook",
       img: "/svg/social/social-icon-facebook.svg",
     },
     {
-      src: "#telegram",
+      src: "https://t.me/allvart_estate",
       title: "Телеграм",
       img: "/svg/social/social-icon-telegram.svg",
     },
     {
-      src: "#twitter",
+      src: "https://x.com/AAllvart",
       title: "Твітер",
       img: "/svg/social/social-icon-twitter.svg",
+    },
+    {
+      src: "https://www.tiktok.com/@allvart.company",
+      title: "ТікТок",
+      img: "/svg/social/social-icon-tiktok.svg",
     },
   ];
   return (
@@ -54,8 +59,8 @@ export default function Footer() {
             <ul className="flex gap-10 md:gap-[25px] justify-center md:justify-start">
               {socialLink.map((el) => (
                 <li>
-                  <a href={el.src}>
-                    <img src={el.img} alt={el.title} />
+                  <a href={el.src} target="_blank">
+                    <img src={el.img} alt={el.title} className="w-5 h-5" />
                   </a>
                 </li>
               ))}
@@ -76,16 +81,21 @@ export default function Footer() {
                 <li className="flex gap-[4px] md:gap-[8px] items-start">
                   <img src="/svg/icon-map-pin.svg" alt="Address" />
                   <a
-                    href="https://www.google.com/maps?q=Ірпінь, вул. Садова, 70"
+                    href="https://www.google.com/maps?q=Ірпінь, вул. Рената Польового, 1"
                     target="_blank"
                   >
-                    02001, Ірпінь, Grand Estate,
-                    <br /> вул. Садова, 70
+                    02001, Ірпінь, Allvart Estate
+                    <br /> вул. Рената Польового, 1
                   </a>
                 </li>
                 <li className="flex gap-[4px] md:gap-[8px] items-start">
                   <img src="/svg/icon-mail.svg" alt="Mail" />
-                  <a href="mailto:hello@allvart.com">hello@allvart.com</a>
+                  <a
+                    className="break-all"
+                    href="mailto:allvartallvart@gmail.com"
+                  >
+                    allvartallvart@gmail.com
+                  </a>
                 </li>
                 <li className="flex gap-[4px] md:gap-[8px] items-start">
                   <img src="/svg/icon-phone.svg" alt="Phone" />
@@ -93,9 +103,9 @@ export default function Footer() {
                     href="#main-goal"
                     className="flex flex-col gap-0.5 tracking-[0]"
                   >
-                    <a href="tel:+38(093)350-68-69">+38 (093) 350-68-69</a>
-                    <a href="tel:+38(097)350-68-69">+38 (097) 350-68-69</a>
-                    <a href="tel:+38(050)350-68-69">+38 (050) 350-68-69</a>
+                    <a href="tel:+38(063)3909090">+38 (063) 390-90-90</a>
+                    <a href="tel:+38(075)3909090">+38 (075) 390-90-90</a>
+                    <a href="tel:+38(067)3909090">+38 (067) 390-90-90</a>
                   </div>
                 </li>
               </ul>

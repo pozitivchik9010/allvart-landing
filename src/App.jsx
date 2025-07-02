@@ -1,7 +1,6 @@
 import "./App.css";
 import Button from "./components/Button";
-import Cookie from "./components/Cookie";
-import FeatureItem from "./components/FeatureItem";
+import FeatureItems from "./components/FeatureItems";
 import Field from "./components/Field";
 import FlexContainer from "./components/FlexContainer";
 import Footer from "./components/Footer";
@@ -9,7 +8,6 @@ import Form from "./components/Form";
 import Header from "./components/Header";
 import InfoCard from "./components/InfoCard";
 import ModalManager from "./components/ModalManager";
-import ModalWindow from "./components/ModalWindow";
 
 import SliderImage from "./components/SliderImage";
 import TextBlock from "./components/TextBlock";
@@ -130,7 +128,6 @@ function App() {
           </FlexContainer>
         </div>
       </section>
-      <Cookie />
 
       <section
         id="main-goal-1"
@@ -160,31 +157,8 @@ function App() {
               </TextDescription>
             </FlexContainer>
             <div className="grid xl:grid-cols-2 gap-[80px] xl:gap-[168px] text-black items-center">
-              <div className="grid sm:grid-cols-2 gap-[20px] md:gap-x-[76px] md:gap-y-[42px]">
-                {/* map() */}
-                <FeatureItem
-                  number={"01"}
-                  titleItem={"Без комісії від угод"}
-                  textItem={"Тепер ніяких комісій від угод, 100% ВАШІ"}
-                />
-                <FeatureItem
-                  number={"02"}
-                  titleItem={"Юридичний супровід"}
-                  textItem={"Повний юридичний супровід безпосередньо в офісі"}
-                />
-                <FeatureItem
-                  number={"03"}
-                  titleItem={"Без звітів"}
-                  textItem={
-                    "Ви звітуєте тільки перед собою. Ваші угоди - це Ваші гроші!"
-                  }
-                />
-                <FeatureItem
-                  number={"04"}
-                  titleItem={"Нотаріальні послуги"}
-                  textItem={"Нотаріальні послуги безпосередньо в офісі"}
-                />
-              </div>
+              <FeatureItems />
+
               <FlexContainer className="relative hidden xl:flex gap-[40px] w-[490px] text-start">
                 <TextDescription>
                   Долучайся до нашої команди.
@@ -208,7 +182,7 @@ function App() {
         className="scroll-mt-[64px] flex justify-center h-full bg-linear-to-b from-[#0A0D1B] to-[#030D37]"
       >
         <FlexContainer className="  relative gap-[34px] md:gap-[80px] items-center w-full max-w-[1538px] px-3 pt-[40px] md:pt-[80px]">
-          <div className="max-lg:hidden absolute top-0 grid grid-cols-12  overflow-hidden  h-full  w-full">
+          <div className="max-lg:hidden absolute top-0 grid grid-cols-12  overflow-hidden  h-full max-h-[325px] w-full">
             <div className="absolute -top-25 grid grid-cols-12 w-full">
               <div className="col-start-2  h-[254px] w-px bg-gradient-to-b from-[#0A0D1B]/0 from-0% via-[#60A5FA] via-50% to-[#0A0D1B]/0 to-100%  pointer-events-none" />
               <div className="col-start-12 h-[254px] w-px bg-gradient-to-b from-[#0A0D1B]/0 from-0% via-[#60A5FA] via-50% to-[#0A0D1B]/0 to-100%  pointer-events-none" />

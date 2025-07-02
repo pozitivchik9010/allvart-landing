@@ -3,11 +3,6 @@ export default function Field({ className, error, ...props }) {
     "h-[44px] py-3 px-2   bg-white/5 border-b outline-none placeholder-[#798395] placeholder:text-base/[22px] transition-colors duration-150  !autofill:bg-red-400";
   return (
     <div className={`flex flex-col gap-24px`}>
-      {/* {label ? (
-        <label name={name} className="text-sm text-red-700 font-normal">
-          {label}
-        </label>
-      ) : null} */}
       <input
         autocomplete="off"
         {...props}

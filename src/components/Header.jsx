@@ -59,7 +59,7 @@ export default function Header() {
         />
         <div className="flex md:gap-[40px] items-center font-medium max-md:w-10 max-md:h-10">
           <Button
-            className={`gap-[10px] px-5  tracking-[0.1em]  hover:border-white/20  active:border-white/20  max-md:w-full ${
+            className={`gap-[10px] lg:px-5 lg:100% max-lg:w-10 tracking-[0.1em]  hover:border-white/20  active:border-white/20  max-md:w-full ${
               isScrolled
                 ? "  text-[#142A4C] hover:bg-[#DFDFDF] active:bg-[#DFDFDF]/60 "
                 : "text-[#DFDFDF] hover:bg-white/10 hover:text-white active:bg-white/5"
@@ -94,7 +94,6 @@ export default function Header() {
         </div>
       </div>
 
-      {/* Мобільне меню з анімацією */}
       <div
         className={`
           lg:hidden 

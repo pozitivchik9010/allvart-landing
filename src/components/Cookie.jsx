@@ -1,18 +1,27 @@
 import { useEffect, useState } from "react";
 import Button from "./Button";
 import TextDescription from "./TextDescription";
-import CookiePolicy from "./CookiePolicy";
 import ModalManager from "./ModalManager";
+const getCookie = (name) => {
+  const value = `; ${document.cookie}`;
+  const parts = value.split(`; ${name}=`);
+  if (parts.length === 2) return parts.pop().split(";").shift();
+};
+
+export const setCookie = (name, value, days = 365) => {
+  const expires = new Date(Date.now() + days * 864e5).toUTCString();
+  document.cookie = `${name}=${value}; expires=${expires}; path=/`;
+};
 
 export default function Cookie() {
   const [showCookie, setShowCookie] = useState(false);
   useEffect(() => {
-    const accepted = localStorage.getItem("cookieAccepted");
+    const accepted = getCookie("cookieAccepted");
     setShowCookie(accepted !== "true");
   }, []);
 
   const handleAccept = () => {
-    localStorage.setItem("cookieAccepted", "true");
+    setCookie("cookieAccepted", "true", 365);
     setShowCookie(false);
   };
   if (!showCookie) return null;

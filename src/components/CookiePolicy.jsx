@@ -1,11 +1,11 @@
-import { useState } from "react";
 import Button from "./Button";
 import ModalWindow from "./ModalWindow";
 import TextDescription from "./TextDescription";
+import { setCookie } from "./Cookie";
 
 export default function CookiePolicy({ state, onAccept, onClose }) {
   const handleAccept = () => {
-    localStorage.setItem("cookieAccepted", "true");
+    setCookie("cookieAccepted", "true", 365);
     onAccept?.();
     onClose();
   };
